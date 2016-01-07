@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
 	has_one :profile
-	has_many :post
-	has_many :comment
+	has_many :comments
+	has_many :posts
 end
