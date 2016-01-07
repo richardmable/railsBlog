@@ -10,7 +10,7 @@
 
 * When a user posts, it takes the post and makes it into a "telegram"
 
-### Possibly Features:
+### Possible Features:
 
 * Users are emailed when a comment is made on their post
 
