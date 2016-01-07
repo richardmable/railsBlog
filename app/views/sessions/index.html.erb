@@ -1,2 +1,12 @@
 <h1>Sessions#index</h1>
 <p>Find me in app/views/sessions/index.html.erb</p>
+
+
+<h3>Please sign in:</h3>
+<%= form_for @user, Session.create do |c| %>
+	<%= c.label :Username %>
+	<%= c.text_field :username %>
+	<%= c.label :Password %>
+	<%= c.submit :Submit %>
+<% end %>
+

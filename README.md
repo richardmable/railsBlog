@@ -2,6 +2,8 @@
 
 ### Creating a Rails Blog that emulates the old-fashioned Telegram
 
+#### See the site wireframe sketch [here](https://precursorapp.com/document/Telegrapher-blog-site-layout-17592202673193)
+
 ## Features:
 
 * Users can sign in, post, and comment on posts
