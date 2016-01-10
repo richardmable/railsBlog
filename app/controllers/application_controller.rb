@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   	if session[:user_id]
   	@currentUser = User.find(session[:user_id])
   end
+  end
 
 
 end
