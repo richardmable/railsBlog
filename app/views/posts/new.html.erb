@@ -1,0 +1,9 @@
+<h1>Sign Up</h1>
+
+<%= form_for @post, :html => {:class => 'x'} do |f| %> 
+	<%=f.label :Title %>  
+	<%=f.text_field :title %>
+	<%=f.label :Post_Away %>  
+	<%=f.text_field :title, :cols => "10", :rows => "10" %>    
+	<%=f.submit :create %> 
+<% end %>
