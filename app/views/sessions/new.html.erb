@@ -1,12 +1,12 @@
-<h1> Login in Biiiiitch</h1>
+<h1> Login in</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-		
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-		      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+<%= f.label :email %>
+<%= f.email_field :email, class: 'form-edit' %>
+
+<%= f.label :password %>
+<%= f.password_field :password, class: 'form-edit' %>
+<%= f.submit "Log in", class: "button" %>
+<% end %>
 
