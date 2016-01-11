@@ -1,8 +1,4 @@
 class SessionsController < ApplicationController
-
-	def new
-	end
-
 	#logs a user in and sets their session
 	def create
 		#sets @user to the session params defined in the private session_params
@@ -39,6 +35,4 @@ class SessionsController < ApplicationController
 		def session_params
 			params.require(:session).permit(:session_id)
 		end
-	
-
 end

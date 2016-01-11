@@ -1,0 +1,9 @@
+<h1> Edit <%= @user.username %> Profile </h1>
+
+<%= form_for @user, html: {method: :put} do |f| %>
+<%=f.label :Email %>
+<%=f.text_field :email %>
+<%=f.label :Password %>
+<%=f.text_field :password %>
+<%=f.submit :update %> 
+<% end %>

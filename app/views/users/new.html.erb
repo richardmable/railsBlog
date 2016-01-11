@@ -1,5 +1,6 @@
 <h1>Sign Up</h1>
-<%=form_for User.new do |f| %>
+<br>
+<%=form_for @user do |f| %>
 <%=f.label :User_Name %>
 <%=f.text_field :username %>
 <%=f.label :Email %>
