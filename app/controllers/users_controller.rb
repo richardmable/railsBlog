@@ -20,10 +20,10 @@ class UsersController < ApplicationController
       flash[:notice] = "Your account was created successfully."
       session[:user_id] = @user.id
       current_user
-      redirect_to users_url
+      redirect_to new_profile_url
      else
       flash[:alert] = "There was a problem saving your account."
-      redirect_to users_new
+      redirect_to new_user_url
      end
   end
 
