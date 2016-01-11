@@ -3,10 +3,11 @@
 
 
 <h3>Please sign in:</h3>
-<%= form_for @user, Session.create do |c| %>
-	<%= c.label :Username %>
-	<%= c.text_field :username %>
-	<%= c.label :Password %>
-	<%= c.submit :Submit %>
+<%= form_tag('/login', method: 'post') do %>
+	<%= label_tag(:username, "Username:") %>
+	<%= text_field_tag(:username )%>
+	<%= label_tag(:password, "Password:") %>
+	<%= password_field_tag(:password) %>
+	<%= submit_tag("Submit") %>
 <% end %>
 
