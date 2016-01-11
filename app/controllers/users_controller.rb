@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
   	@users = User.all
   end
@@ -8,10 +9,17 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    session[:user_id] == params[:id]
+    puts "session id"
+    puts session[:user_id]
+    current_user
+    puts "where is this"
+    puts @currentUser
+    @user = User.find(@currentUser.id)
+    
   end
 
-   def create
+  def create
     puts "*************"
     puts "These are the PARAMS"
     puts params[:user]
@@ -20,7 +28,7 @@ class UsersController < ApplicationController
       @user = User.create(user_params)
      if @user.save
       flash[:notice] = "Your account was created successfully."
-      redirect_to @user
+      redirect_to user_path @user
      else
       flash[:alert] = "There was a problem saving your account."
       redirect_to new_user_path
@@ -50,5 +58,4 @@ private
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
-
 end
