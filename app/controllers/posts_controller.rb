@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+  
   def index
   	@posts = Post.all
+    @comments = Comment.all
   end
 
   def new
+    current_user
   	@post = Post.new
   end
 
@@ -12,19 +15,18 @@ class PostsController < ApplicationController
   end
 
   def create
-  	# @post = Post.find(params[:id])
-
-  	puts "***************"
-  	puts "THESE ARE THE PARAMS"
-  	puts params[:post]
-  	# redirect_to root_path
-  	@post = Post.new(post_params)
-  	if @post.save
+    current_user
+  	@post = Post.create(post_params)
+    @post.user_id = @currentUser.id
+    if params[:title] || params[:content] == ""
+      flash[:alert] = "Posts need to have both title and content!"
+      redirect_to new_posts_url
+  	elsif @post.save
   		flash[:notice] = "Your post was created successfully."
-  		redirect_to post_path @post
+  		redirect_to posts_url
   	else
   		flash[:alert] = "There was a problem saving your post."
-  		redirect_to post_path notice: "Post was posted"
+  		redirect_to new_post_url
   	end
   end
 
@@ -38,7 +40,7 @@ class PostsController < ApplicationController
 	private   
 
 	def post_params
-		params.require(:post).permit(:title, :content)   
+		params.require(:post).permit(:user_id, :title, :content)   
 	end
 
 end

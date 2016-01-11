@@ -11,31 +11,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    session[:user_id] == params[:id]
-    puts "session id"
-    puts session[:user_id]
-    current_user
-    puts "where is this"
-    puts @currentUser
-    @user = User.find(@currentUser.id)
-    
+    current_user 
   end
 
   def create
-    puts "*************"
-    puts "These are the PARAMS"
-    puts params[:user]
-    puts "CREATING USER"
-
-      @user = User.create(user_params)
+    @user = User.create(user_params)
      if @user.save
       flash[:notice] = "Your account was created successfully."
       session[:user_id] = @user.id
       current_user
-      redirect_to users_url
+      redirect_to new_profile_url
      else
       flash[:alert] = "There was a problem saving your account."
-      redirect_to users_new
+      redirect_to new_user_url
      end
   end
 

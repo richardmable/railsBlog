@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+nav {
+	margin: 20px;
+}
+
+ul {
+	overflow: auto;
+	list-style-type: none;
+}
+
+li {
+	height: 25px;
+	float: left;
+	margin-right: 0px;
+	border-right: 1px solid #aaa;
+	padding: 0 20px;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+
+
+/*#left li {
+	list-style-type: none;
+    float: left;
+    padding: 10px;
+}
+
+#right li{
+	float: right;
+	list-style-type: none;
+	padding: 10px;
+}*/
+.login {
+	/*border: solid 5px red;*/
+	clear: both;
+	text-align: center;
+	padding-top: 10px;
+}
+

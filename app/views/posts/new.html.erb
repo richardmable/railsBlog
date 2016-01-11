@@ -1,9 +1,10 @@
-<h1>Sign Up</h1>
+<h1>Create a new post <%= @currentUser.username %>!</h1>
 
-<%= form_for @post, :html => {:class => 'x'} do |f| %> 
+<%= form_for Post.new do |f| %> 
 	<%=f.label :Title %>  
 	<%=f.text_field :title %>
-	<%=f.label :Post_Away %>  
-	<%=f.text_field :title, :cols => "10", :rows => "10" %>    
-	<%=f.submit :create %> 
+	<p><%=f.label :Content %>
+		<!-- not sure why the sizing for the text field is not working -->
+	<%=f.text_field :content, :cols => "50", :rows => "50" %></p>   
+	<%=f.submit :Post! %> 
 <% end %>
