@@ -13,11 +13,12 @@
 		<%=f.submit :Comment %>
 		<%end%>
 <p>Comments:</p>
-		<% if p.
-		<% @comments.each do |c|%>
-		<h2><%= c.title %></h2>
-		<p><%= c.content %></p>
-		<p><%= c.post_id %></p>
-		<p>By: <%= c.user_id %> </p>
+		<% if p.comments %>
+			<% p.comments.each do |c|%>
+			<h2><%= c.title %></h2>
+			<p><%= c.content %></p>
+			<p><%= c.post_id %></p>
+			<p>By: <%= c.user_id %> </p>
+			<% end %>
 		<% end %>
 <% end %>
