@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   #when going to /login, invoke 'new' action (which does nothing ATM). 
-  #This also allows us to write a log_in_path
-  get 'login' => 'sessions#new', as: :login
+  #This also allows us to write a login_url
+  get 'login' => 'sessions#index', as: :login
   #when submitting the login form, invoke the sessions#create action which should sign the user in
   post 'login' => 'sessions#create'
-  #allows us to sign out a user, and sets a log_out_path
+  #allows us to sign out a user, and sets a logout_url
   delete 'logout' => 'sessions#destroy', as: :logout
   #set the root page to be the login page
   root "sessions#index"

@@ -11,14 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    session[:user_id] == params[:id]
-    puts "session id"
-    puts session[:user_id]
-    current_user
-    puts "where is this"
-    puts @currentUser
-    @user = User.find(@currentUser.id)
-    
+    current_user 
   end
 
   def create

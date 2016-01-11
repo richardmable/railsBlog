@@ -1,0 +1,14 @@
+<h1>Profiles#new</h1>
+<p>Find me in app/views/profiles/new.html.erb</p>
+<h1>Create your profile!</h1>
+<%= form_for Profile.new do |f| %>
+<%=f.label :First_Name %>
+<%=f.text_field :fname %>
+<%=f.label :Last_Name %>
+<%=f.text_field :lname %>
+<%=f.label :Location %>
+<%=f.password_field :location %>
+<%=f.label :Age %>
+<%=f.password_field :age %>
+<%=f.submit :Sign_Up %>
+<%end%>

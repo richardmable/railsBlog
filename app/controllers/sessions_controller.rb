@@ -18,9 +18,9 @@ class SessionsController < ApplicationController
 			redirect_to users_url(@currentUser)
 		else
 			#alert the user if they username and password do not match
-			flast[:alert] = "Unable to log in. Please check your username and password."
+			flash[:alert] = "Unable to log in. Please check your username and password."
 			#reload the page so they can try again
-			redirect_to log_in_path
+			redirect_to login_url
 		end
 	end
 
