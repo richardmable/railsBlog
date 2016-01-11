@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   def index
+  	current_user
+  	@comment = Comment.new
   end
 
   def new
@@ -9,8 +11,9 @@ class CommentsController < ApplicationController
 
   def create
   	current_user
-  	@comment = Comment.create(comment_params)
+  	@comment = Comment.new(comment_params)
   	@comment.user_id = @currentUser.id
+  	puts comment_params
   	if params[:title] || params[:content] == ""
       flash[:alert] = "Comments need to have both title and content!"
       redirect_to posts_url
@@ -30,6 +33,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:commment).permit(:user_id, :post_id, :title, :content)
+    params.require(:comment).permit(:user_id, :post_id, :title, :content)
   end
 end

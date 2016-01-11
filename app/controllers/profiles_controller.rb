@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
       redirect_to profiles_url
      else
       flash[:alert] = "There was a problem creating your profile."
-      redirect_to new_profile_url
+      redirect_to new_profiles_url
      end
   end
 

@@ -9,4 +9,6 @@ class ApplicationController < ActionController::Base
   	@currentUser = User.find(session[:user_id])
   	end
   end
+#this runs current_user on every action every time it is called
+  # before_action :current_user
  end
