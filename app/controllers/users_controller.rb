@@ -30,13 +30,14 @@ class UsersController < ApplicationController
       @user = User.create(user_params)
      if @user.save
       flash[:notice] = "Your account was created successfully."
-      redirect_to user_path @user
+      session[:user_id] = @user.id
+      current_user
+      redirect_to users_url
      else
       flash[:alert] = "There was a problem saving your account."
-      redirect_to new_user_path
+      redirect_to users_new
      end
   end
-
 
   def edit
     @user = User.find(params[:id])
