@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :users, :posts
-  root "users#index"
-  
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  #when going to /login, invoke 'new' action (which does nothing ATM). 
+  #This also allows us to write a log_in_path
+  get 'login' => 'sessions#new', as: :login
+  #when submitting the login form, invoke the sessions#create action which should sign the user in
+  post 'login' => 'sessions#create'
+  #allows us to sign out a user, and sets a log_out_path
+  delete 'logout' => 'sessions#destroy', as: :logout
+  #set the root page to be the login page
+  root "sessions#index"
+  #RESTful routing for users, comments, profiles and posts
+  resources :users, :comments, :profiles, :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
