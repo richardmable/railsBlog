@@ -1,5 +1,6 @@
 <h1>Profiles#new</h1>
 <p>Find me in app/views/profiles/new.html.erb</p>
+<h1>Your id should be: <%= @currentUser.id %></h1>
 <h1>Create your profile!</h1>
 <%= form_for Profile.new do |f| %>
 <%=f.label :First_Name %>
