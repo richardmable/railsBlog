@@ -4,21 +4,21 @@
 <h2><%= p.title %></h2>
 <p><%= p.content %></p>
 <p>By: <%= p.user_id %> </p>
-<%= form_for Comment.new do |f| %>
-	<%=f.label :Title %>
-	<%=f.text_field :title %>
-	<%=f.label :content %>
-	<%=f.text_field :content %>
-	<%= hidden_field_tag(:post_id, p.id) %>
-	<%=f.submit :Comment %>
-	<%end%>
+	<%= form_for @comment do |f| %> 
+		<%=f.label :Title %>
+		<%=f.text_field :title %>
+		<%=f.label :content %>
+		<%=f.text_field :content %>
+		<%= hidden_field(:comment, :post_id, :value => p.id) %>
+		<%=f.submit :Comment %>
+		<%end%>
 <p>Comments:</p>
-	<!-- some logic to see if there are any commments to display -->
-	<% if p.comments.user_id == 1 %>
-		<% @comments.each do |c|%>
-		<h2><%= c.title %></h2>
-		<p><%= c.content %></p>
-		<p>By: <%= c.user_id %> </p>
+		<% if p.comments %>
+			<% p.comments.each do |c|%>
+			<h2><%= c.title %></h2>
+			<p><%= c.content %></p>
+			<p><%= c.post_id %></p>
+			<p>By: <%= c.user_id %> </p>
+			<% end %>
 		<% end %>
-	<% end %>
 <% end %>
