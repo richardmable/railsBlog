@@ -10,20 +10,24 @@ class CommentsController < ApplicationController
   end
 
   def create
-  	current_user
-  	@comment = Comment.new(comment_params)
-  	@comment.user_id = @currentUser.id
-  	puts comment_params
-  	if params[:title] || params[:content] == ""
-      flash[:alert] = "Comments need to have both title and content!"
-      redirect_to posts_url
-  	elsif @comment.save
-  		flash[:notice] = "Your comment was posted."
-  		redirect_to posts_url
-  	else
-  		flash[:alert] = "There was a problem creating your commment."
-  		redirect_to posts_url
-  	end
+  	if current_user
+    	@comment = Comment.new(comment_params)
+    	@comment.user_id = @currentUser.id
+    	puts comment_params
+    	if params[:title] || params[:content] == ""
+        flash[:alert] = "Comments need to have both title and content!"
+        redirect_to posts_url
+    	elsif @comment.save
+    		flash[:notice] = "Your comment was posted."
+    		redirect_to posts_url
+    	else
+    		flash[:alert] = "There was a problem creating your commment."
+    		redirect_to posts_url
+    	end
+    else
+      no_current_user
+      flash[:alert] = "Need to be logged in to comment!"
+    end
   end
 
 
