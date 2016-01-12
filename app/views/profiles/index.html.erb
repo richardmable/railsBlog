@@ -1,2 +1,9 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<h1>All the profiles!</h1>
+<p>Not all users have profiles, depending on when they were created.</p>
+
+<% @profile.each do |f| %>
+<p>First Name: <%= f.fname %></p>
+<p>Last Name: <%= f.lname %></p>
+<p>Location :<%= f.location %></p>
+<p>Age: <%= f.age %></p>
+<% end %>

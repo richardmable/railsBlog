@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     #checks to see if there is a user logged in
     current_user
-  	@users = User.all
+    no_current_user
   end
 
   def new
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    current_user 
+    current_user
+    no_current_user
   end
 
   def create

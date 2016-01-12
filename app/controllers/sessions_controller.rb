@@ -22,12 +22,13 @@ class SessionsController < ApplicationController
 
 	#logs user out
 	def destroy
+		current_user
 		#set the session id to nil
-		session[:user_id] == nil
+		session[:user_id] = nil
 		#alert the user they have been logged out
 		flash[:notice] = "You are now logged out."
 		#redirect to the landing page
-		redirect_to home_path
+		redirect_to login_url
 	end
 
 	# only strong params for setting sessions

@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def new
     current_user
+    no_current_user
   	@post = Post.new
   end
 
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
 
   def create
     current_user
+    no_current_user
     telegram
   	@post = Post.create(post_params)
     @post.user_id = @currentUser.id

@@ -9,19 +9,13 @@
 <body>
 	<%= flash[:notice] if flash[:notice] %> 
 	<%= flash[:alert] if flash[:alert] %>
-	<!-- <nav>
-		<a href="">Users</a>
-		<a href="">Profile</a>
-		<a href="">New Post</a>
-		<a href="">Posts</a>
-		<a href="">Login</a>
-		<a href="">Logout</a>
-	</nav> -->
 
 <nav>
 		<ul id="left">
+			<a href="/users/new"><li>Sign Up</li></a>
 			<a href="/users"><li>Users</li></a>
 			<a href="/profiles"><li>Profile</li></a>
+			<a href="/profiles/:id"><li>Your Profile</li></a>
 			<a href="/posts/new"><li>New Post</li></a>
 			<a href="/posts"><li>Posts</li></a>
 			<a href="/login"><li>Login</li></a>

@@ -1,9 +1,11 @@
 class ProfilesController < ApplicationController
   def index
+    @profile = Profile.all
   end
 
   def new
   	current_user
+    no_current_user
     @profile = Profile.new
   end
 
@@ -31,6 +33,7 @@ class ProfilesController < ApplicationController
   #method for updating the profile of a user
   def update
     current_user
+    no_current_user
     @profileUpdate = User.find(@currentUser.id).profile.update(profile_params)
     #update the profile's user_id to the current user's id
     # @profileUpdate.user_id = @currentUser.id
@@ -45,9 +48,12 @@ class ProfilesController < ApplicationController
 
   #method for showing the current user's profile
   def show
-    current_user
+    if current_user
     @profile = Profile.where(user_id: @currentUser.id)
     @profileUpdate = Profile.where(user_id: @currentUser.id).first
+    else
+    no_current_user
+    end
   end
 
   private

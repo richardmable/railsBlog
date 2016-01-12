@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #when submitting the login form, invoke the sessions#create action which should sign the user in
   post 'login' => 'sessions#create'
   #allows us to sign out a user, and sets a logout_url
-  delete 'logout' => 'sessions#destroy', as: :logout
+  get 'logout' => 'sessions#destroy', as: :logout
   #set the root page to be the login page
   root "sessions#index"
   #RESTful routing for users, comments, profiles and posts

@@ -1,5 +1,3 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-
 <h1>Welcome!</h1>
-<h2>Hopefully, your current session id should be <%= @currentUser.id %></h2>
+<h2>Hopefully, your name is: <%= @currentUser.profile.fname %></h2>
+<p>If it's not, maybe it's someone else who is singed in...</p>
