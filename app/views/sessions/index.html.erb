@@ -1,4 +1,4 @@
-<div class="login">
+<div id="login">
 	<h3>Please sign in:</h3>
 	<%= form_tag('/login', method: 'post') do %>
 		<%= label_tag(:username, "Username:") %>
@@ -7,5 +7,5 @@
 		<%= password_field_tag(:password) %>
 		<%= submit_tag("Submit") %>
 	<% end %>
-
 </div>
+

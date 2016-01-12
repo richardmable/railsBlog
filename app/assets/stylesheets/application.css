@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+* {
+	background-color: rgb(202, 179, 162);
+}
 
 nav {
 	margin: 20px;
@@ -31,14 +34,20 @@ li {
 	padding: 0 20px;
 }
 
+li a {
+  text-decoration: none;
+  color: #ccc;
+  font: 25px/1 Helvetica, Verdana, sans-serif;
+  text-transform: uppercase;
+
 li:last-child {
   border-right: none;
 }
 
-.login {
+#login {
 	/*border: solid 5px red;*/
 	clear: both;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 70px;
 }
 
