@@ -35,19 +35,6 @@ li:last-child {
   border-right: none;
 }
 
-
-
-/*#left li {
-	list-style-type: none;
-    float: left;
-    padding: 10px;
-}
-
-#right li{
-	float: right;
-	list-style-type: none;
-	padding: 10px;
-}*/
 .login {
 	/*border: solid 5px red;*/
 	clear: both;
