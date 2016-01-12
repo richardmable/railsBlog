@@ -3,7 +3,8 @@
 <% @posts.each do |p|%>
 <h2><%= p.title %></h2>
 <p><%= p.content %></p>
-<p>By: <%= p.user_id %> </p>
+<p>This would cost: <%= number_to_currency(p.cost) %></p>
+<p>By: <%= p.user.profile.fname %> </p>
 	<%= form_for @comment do |f| %> 
 		<%=f.label :Title %>
 		<%=f.text_field :title %>
@@ -15,10 +16,10 @@
 <p>Comments:</p>
 		<% if p.comments %>
 			<% p.comments.each do |c|%>
-			<h2><%= c.title %></h2>
+			<p>In reply to: <%= c.post.title %></p>
+			<p>By: <%= c.user.profile.fname %> </p>
+			<h5><%= c.title %></h5>
 			<p><%= c.content %></p>
-			<p><%= c.post_id %></p>
-			<p>By: <%= c.user_id %> </p>
 			<% end %>
 		<% end %>
 <% end %>

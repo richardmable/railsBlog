@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   def index
     @comment = Comment.new
   	@posts = Post.all
-    @comments = Comment.all
   end
 
   def new
@@ -17,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     current_user
+    telegram
   	@post = Post.create(post_params)
     @post.user_id = @currentUser.id
     if params[:title] || params[:content] == ""
@@ -37,11 +37,29 @@ class PostsController < ApplicationController
   	# redirect_to
   end
 
+  #following code turns post into a telegram look a like, and figures out the cost circa...today!
+  def telegram
+    #capatalize the title
+    post_params[:title].upcase!
+    content = post_params[:content]
+    #count every char in the content of the post
+    charCount = content.count("a-z")
+    #this is computer by figuring that a: there is a telegram service in Canada that exists today
+    #http://www.globalpost.com/dispatch/news/the-canadian-press/130618/you-can-still-send-telegram-2013-itll-cost-you-19
+    #$18.95 divided by 100 words, at 4 chars avg a word, equals 4.7375 cents per char.
+    cost = post_params[:cost]
+    cost = ((charCount.to_i * 4.7375) / 100)
+    #replace every period with the classic STOP as it used to be, and make the whole content upper case.
+    content.gsub!(/\./, ' -(STOP)- ').upcase!
+    #set the newly formatted post to params[:content] so that it can be passed into post.create
+    post_params[:content] = content
+    post_params[:cost] = cost
+  end
 
 	private   
 
 	def post_params
-		params.require(:post).permit(:user_id, :title, :content)   
+		params.require(:post).permit(:user_id, :title, :content, :cost)   
 	end
 
 end

@@ -28,7 +28,26 @@ class ProfilesController < ApplicationController
      end
   end
 
+  #method for updating the profile of a user
+  def update
+    current_user
+    @profileUpdate = User.find(@currentUser.id).profile.update(profile_params)
+    #update the profile's user_id to the current user's id
+    # @profileUpdate.user_id = @currentUser.id
+    if @profileUpdate
+      flash[:notice] = "Your profile was updated successfully."
+      redirect_to profile_path
+     else
+      flash[:alert] = "There was a problem updating your profile."
+      redirect_to profile_path
+    end
+  end
+
+  #method for showing the current user's profile
   def show
+    current_user
+    @profile = Profile.where(user_id: @currentUser.id)
+    @profileUpdate = Profile.where(user_id: @currentUser.id).first
   end
 
   private

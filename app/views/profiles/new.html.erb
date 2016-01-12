@@ -2,7 +2,7 @@
 <p>Find me in app/views/profiles/new.html.erb</p>
 <h1>Your id should be: <%= @currentUser.id %></h1>
 <h1>Create your profile!</h1>
-<%= form_for Profile.new do |f| %>
+<%= form_for @profile do |f| %>
 <%=f.label :First_Name %>
 <%=f.text_field :fname %>
 <%=f.label :Last_Name %>
