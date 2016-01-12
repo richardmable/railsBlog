@@ -46,9 +46,9 @@ class PostsController < ApplicationController
     charCount = content.count("a-z")
     #this is computer by figuring that a: there is a telegram service in Canada that exists today
     #http://www.globalpost.com/dispatch/news/the-canadian-press/130618/you-can-still-send-telegram-2013-itll-cost-you-19
-    #$18.95 divided by 100 words, at 4 chars avg a word, equals 0.047 cents per char.
-    post_params[:cost] = (charCount * 0.047) / 100
-    #replace every period with the classic STOP as it used to be
+    #$18.95 divided by 100 words, at 4 chars avg a word, equals 4.7375 cents per char.
+    post_params[:cost] = ((charCount.to_i * 4.7375) / 100)
+    #replace every period with the classic STOP as it used to be, and make the whole content upper case.
     content.gsub!(/\./, ' -(STOP)- ').upcase!
     #set the newly formatted post to params[:content] so that it can be passed into post.create
     post_params[:content] = content

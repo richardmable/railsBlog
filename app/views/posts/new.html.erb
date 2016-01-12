@@ -1,10 +1,12 @@
-<h1>Create a new post <%= @currentUser.username %>!</h1>
+<h1>Create a new post, <%= @currentUser.profile.fname %>!</h1>
 
-<%= form_for Post.new do |f| %> 
+<%= form_for @post do |f| %> 
 	<%=f.label :Title %>  
 	<%=f.text_field :title %>
 	<p><%=f.label :Content %>
 		<!-- not sure why the sizing for the text field is not working -->
-	<%=f.text_field :content, :cols => "50", :rows => "50" %></p>   
+	<%=f.text_field :content, :cols => "50", :rows => "50" %></p>
+	<!-- I think I have to set the cost to 0 initially so it gets passed into params for processing -->
+	<%= hidden_field(:post, :cost, :value => 0) %>   
 	<%=f.submit :Post! %> 
 <% end %>
